@@ -31,7 +31,11 @@ class MemorySink:
         key_fields = self._idem.get(table)
         for row in rows:
             d = row.model_dump(mode="json")
-            key = tuple(d.get(f) for f in key_fields) if key_fields else json.dumps(d, sort_keys=True, default=str)
+            key = (
+                tuple(d.get(f) for f in key_fields)
+                if key_fields
+                else json.dumps(d, sort_keys=True, default=str)
+            )
             if key not in self._seen[table]:
                 self._seen[table].add(key)
                 self._store[table].append(d)
