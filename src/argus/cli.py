@@ -54,9 +54,26 @@ async def _cartograph_async(
 
 
 @app.command()
-def fingerprint(backend: str = "vanilla") -> None:
-    """Run the Fingerprint Lab for the given stealth backend."""
-    typer.echo(f"[stub] fingerprint backend={backend}")
+def fingerprint(
+    backend: str = typer.Option(
+        "",
+        help="Specific backend to test (default: all). vanilla|stealth|patchright|camoufox",
+    ),
+    vendor: str = typer.Option("cloudflare", help="Defense vendor label for result grouping"),
+    fp_page: str = typer.Option("", help="Override fingerprint detection page URL"),
+) -> None:
+    """Run Fingerprint Lab — test each stealth backend, report pass/fail, persist results."""
+    asyncio.run(_fingerprint_async(backend, vendor, fp_page))
+
+
+async def _fingerprint_async(backend: str, vendor: str, fp_page: str) -> None:
+    from argus.antibot.fingerprint_lab import _FP_PAGE, run_lab
+    from argus.antibot.rung import RUNG_ORDER
+
+    backends = [backend] if backend else list(RUNG_ORDER)
+    page = fp_page or _FP_PAGE
+    await run_lab(backends=backends, fp_page=page, vendor=vendor)  # type: ignore[arg-type]
+    typer.echo("Results saved → sources/_fingerprint_results.json")
 
 
 @app.command()
