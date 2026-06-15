@@ -1,0 +1,15 @@
+id: decrypt
+name: Decrypt
+url: https://decrypt.co/feed
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://decrypt.co/feed
+    format: rss
+schema: news
+cadence: 5m
+sink_subject: argus.news.decrypt
+robots_ok: true
+terms_note: Public RSS feed. Headlines and summaries only; no paywall bypass.
+notes: Crypto/Web3 news. Importance=1 default; boosts on asset tags and regulatory content.

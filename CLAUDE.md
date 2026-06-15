@@ -96,6 +96,16 @@ snippets). Cartographer class (scroll/hint-click page exercise, probe_embedded_s
 `argus cartograph` wired. 36 tests, all green. WS capture tested via unit mock (Playwright 1.60
 route_web_socket intercepts before page.on fires; documented). Branch: prompt-03-cartographer.
 
+## 2026-06-15 — Prompt 05: News pillar
+10 Tier-0 Source Cards (fed_press, sec_press, sec_8k, us_treasury, bls_releases, ecb_press,
+coindesk, cointelegraph, decrypt, theblock). db/asset_aliases.yaml keyword→tag map (25 assets,
+BTC/ETH/SOL/... + MACRO:CPI/NFP/FOMC/...). pillars/news/: normalize.py (UTC parse, latency_ms,
+dedup_hash, staleness clamp, revision detection), dedup.py (rapidfuzz token_set_ratio across 30m
+window), tag.py (AssetTagger, pluggable), score.py (importance 1–3 rule-based + NoOpImpactScorer
+protocol stub), harvesters.py (NewsRssHarvester Tier0Mixin), pipeline.py (harvest→dedup→tag→
+score→sink). CLI `argus harvest news` wired. sources/news/EDGE_CASES.md. db/sources.yaml updated.
+91 tests total, all green. Branch: prompt-05-news-pillar.
+
 ## 2026-06-15 — Prompt 04: Anti-bot
 rung.py: select_rung() picks lowest-cost passing rung (explicit card override → Fingerprint Lab
 → conservative vendor default). RUNG_ORDER = vanilla→stealth→patchright→camoufox. proxy.py:

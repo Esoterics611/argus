@@ -1,0 +1,15 @@
+id: cointelegraph
+name: Cointelegraph
+url: https://cointelegraph.com/rss
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://cointelegraph.com/rss
+    format: rss
+schema: news
+cadence: 5m
+sink_subject: argus.news.cointelegraph
+robots_ok: true
+terms_note: Public RSS feed. Headlines and summaries only; no paywall bypass.
+notes: High-volume crypto news. Importance=1 default; 2 for named-asset stories; 3 for regulatory.

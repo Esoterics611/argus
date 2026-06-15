@@ -1,0 +1,18 @@
+id: us_treasury
+name: US Treasury Press Releases
+url: https://home.treasury.gov/news/press-releases
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://home.treasury.gov/system/files/276/monthly-statement-public-debt-mspd.xml
+    format: rss
+schema: news
+cadence: 15m
+sink_subject: argus.news.us_treasury
+robots_ok: true
+terms_note: Public government data.
+notes: >
+  Treasury RSS is limited; primary URL is HTML. Tier-0 RSS for MSPD feed.
+  If RSS is insufficient, Cartographer should be run to find JSON endpoints.
+  Importance=3 for rate/debt announcements.

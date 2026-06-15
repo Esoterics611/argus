@@ -1,0 +1,15 @@
+id: theblock
+name: The Block
+url: https://www.theblock.co/rss.xml
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://www.theblock.co/rss.xml
+    format: rss
+schema: news
+cadence: 5m
+sink_subject: argus.news.theblock
+robots_ok: true
+terms_note: Public RSS feed. Headlines and summaries only; no paywall bypass.
+notes: Research-grade crypto news. Importance=2 default; 3 for ETF/regulatory/macro stories.

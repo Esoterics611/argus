@@ -1,0 +1,165 @@
+# Asset alias map: tag → list of keywords/phrases to match in headline+body (case-insensitive).
+# Tags follow the convention: crypto tickers bare (BTC), macro prefixed (MACRO:CPI).
+# Add new assets by appending; the tagger re-loads on each pipeline run.
+
+# ── Crypto ────────────────────────────────────────────────────────────────────
+BTC:
+  - bitcoin
+  - btc
+  - xbt
+  - satoshi
+  - sats
+
+ETH:
+  - ethereum
+  - ether
+  - eth
+  - erc-20
+  - erc20
+
+SOL:
+  - solana
+  - sol
+
+BNB:
+  - binance coin
+  - bnb
+  - binance smart chain
+  - bsc
+
+XRP:
+  - xrp
+  - ripple
+
+ADA:
+  - cardano
+  - ada
+
+DOGE:
+  - dogecoin
+  - doge
+
+AVAX:
+  - avalanche
+  - avax
+
+LINK:
+  - chainlink
+  - link token
+
+DOT:
+  - polkadot
+  - dot
+
+MATIC:
+  - polygon
+  - matic
+
+ARB:
+  - arbitrum
+  - arb
+
+OP:
+  - optimism
+  - op mainnet
+
+USDT:
+  - tether
+  - usdt
+
+USDC:
+  - usd coin
+  - usdc
+
+# ── Macro / indices ──────────────────────────────────────────────────────────
+MACRO:CPI:
+  - consumer price index
+  - cpi
+  - inflation rate
+  - core inflation
+  - headline inflation
+
+MACRO:NFP:
+  - nonfarm payrolls
+  - non-farm payrolls
+  - nfp
+  - jobs report
+  - payrolls
+
+MACRO:FOMC:
+  - federal open market committee
+  - fomc
+  - fed funds rate
+  - rate decision
+  - federal reserve rate
+  - powell
+  - interest rate decision
+
+MACRO:GDP:
+  - gross domestic product
+  - gdp
+
+MACRO:PCE:
+  - personal consumption expenditures
+  - pce
+  - core pce
+
+MACRO:PPI:
+  - producer price index
+  - ppi
+
+MACRO:UNEMPLOYMENT:
+  - unemployment rate
+  - jobless claims
+  - initial claims
+  - continuing claims
+
+MACRO:RETAIL_SALES:
+  - retail sales
+
+MACRO:ISM:
+  - ism manufacturing
+  - ism services
+  - purchasing managers index
+  - pmi
+
+MACRO:ECB:
+  - european central bank
+  - ecb rate
+  - lagarde
+
+MACRO:TREASURY:
+  - treasury yield
+  - 10-year yield
+  - 2-year yield
+  - yield curve
+  - treasury bonds
+  - t-bills
+
+MACRO:DXY:
+  - dollar index
+  - dxy
+  - us dollar index
+
+MACRO:ETF:
+  - bitcoin etf
+  - spot etf
+  - btc etf
+  - crypto etf
+  - exchange-traded fund
+
+MACRO:SEC:
+  - sec enforcement
+  - securities and exchange commission
+  - sec charges
+  - sec lawsuit
+  - sec approval
+
+MACRO:REGULATION:
+  - crypto regulation
+  - digital asset regulation
+  - stablecoin bill
+  - crypto bill
+  - senator
+  - congress
+  - legislation
