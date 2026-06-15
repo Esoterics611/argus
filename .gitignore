@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+dist/
+*.egg-info/
+.eggs/
+
+# uv
+uv.lock
+
+# Env
+.env
+*.env
+
+# Data — never commit harvested data
+data/
+traces/
+site/
+*.parquet
+*.har
+*.zip
+
+# Playwright
+playwright-report/
+test-results/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Camoufox cache
+.camoufox/

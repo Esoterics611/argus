@@ -1,0 +1,39 @@
+services:
+  questdb:
+    image: questdb/questdb:8.1.0
+    ports:
+      - "9000:9000"   # HTTP / REST / UI
+      - "9009:9009"   # InfluxDB Line Protocol (ILP)
+      - "8812:8812"   # PostgreSQL wire
+    volumes:
+      - questdb_data:/var/lib/questdb
+    environment:
+      QDB_CAIRO_COMMIT_LAG: "1000"
+      QDB_LINE_TCP_MAINTENANCE_JOB_INTERVAL: "100"
+
+  nats:
+    image: nats:2.10-alpine
+    ports:
+      - "4222:4222"   # client
+      - "8222:8222"   # monitoring HTTP
+    command: ["--jetstream", "--http_port", "8222"]
+    volumes:
+      - nats_data:/data
+
+  # Optional cold-layer object storage — uncomment to enable
+  # minio:
+  #   image: minio/minio:latest
+  #   ports:
+  #     - "9001:9001"
+  #     - "9002:9002"
+  #   volumes:
+  #     - minio_data:/data
+  #   environment:
+  #     MINIO_ROOT_USER: argus
+  #     MINIO_ROOT_PASSWORD: argus_secret
+  #   command: server /data --console-address ":9002"
+
+volumes:
+  questdb_data:
+  nats_data:
+  # minio_data:

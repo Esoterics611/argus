@@ -1,0 +1,10 @@
+sources: []
+# Populated automatically by the Cartographer and source-profiler skill.
+# Schema: id, pillar, tier, cadence, enabled, ci_safe
+# Example:
+#   - id: fed_press
+#     pillar: news
+#     tier: 0
+#     cadence: 5m
+#     enabled: true
+#     ci_safe: true
