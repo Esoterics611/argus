@@ -95,3 +95,15 @@ recommender). emit.py (cartograph.json inventory, draft Source Card YAML, httpx+
 snippets). Cartographer class (scroll/hint-click page exercise, probe_embedded_state). CLI
 `argus cartograph` wired. 36 tests, all green. WS capture tested via unit mock (Playwright 1.60
 route_web_socket intercepts before page.on fires; documented). Branch: prompt-03-cartographer.
+
+## 2026-06-15 — Prompt 04: Anti-bot
+rung.py: select_rung() picks lowest-cost passing rung (explicit card override → Fingerprint Lab
+→ conservative vendor default). RUNG_ORDER = vanilla→stealth→patchright→camoufox. proxy.py:
+per-context proxy rotation with per-domain stickiness; session tokens embedded in proxy username;
+returns None when PROXY_POOL_URL not set. cadence.py: short_pause/reading_pause/think_pause,
+human_move_to (interpolated mouse + jitter), human_click (bbox randomisation), human_scroll
+(incremental with jitter), scroll_to_bottom. fingerprint_lab.py: run_lab() probes each backend
+against public CreepJS-style page; scores webdriver/headless_ua (hard fail) + canvas/chrome/
+languages/webgl; persists to sources/_fingerprint_results.json. CLI `argus fingerprint` wired.
+Hard-constraint tests: no captcha/login/paywall names in public surface or source files.
+53 tests total, all green. Branch: prompt-04-antibot.
