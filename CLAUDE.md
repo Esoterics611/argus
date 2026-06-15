@@ -80,3 +80,18 @@ Confirmed Extraction Strategy Ladder, house conventions, legal line. Agreed buil
 ## 2026-06-15 — Prompt 01: Repo bootstrap + atlas
 Created full directory tree, pyproject.toml (uv), docker-compose.yml (QuestDB+NATS), init_env.sh,
 .env.example, .gitignore, LICENSE. Wrote all six atlas/ docs and CLAUDE.md.
+
+## 2026-06-15 — Prompt 02: Core engine
+Stealth swap-seam (vanilla/stealth/patchright/camoufox backends). Sink swap-seam (memory/parquet/
+questdb/nats). BrowserFactory with HAR+trace, UTC locale, proxy. SourceCard Pydantic model with
+load/save/validate. All Pydantic contracts (NewsItem, MacroEvent, FundingPoint, LiqHeatmapCell,
+ReactionRow, etc.). Harvester ABC with Tier0/1/4 mixins. Ladder fall-down logic. Async Scheduler
+with per-domain semaphores and tenacity backoff. 22 tests, all green.
+
+## 2026-06-15 — Prompt 03: Cartographer
+NetworkCapture (CDP session + page.on listeners for XHR/fetch/WS, response body via
+Network.getResponseBody). classify.py (data_likelihood scorer, numeric-series detection, tier
+recommender). emit.py (cartograph.json inventory, draft Source Card YAML, httpx+curl_cffi replay
+snippets). Cartographer class (scroll/hint-click page exercise, probe_embedded_state). CLI
+`argus cartograph` wired. 36 tests, all green. WS capture tested via unit mock (Playwright 1.60
+route_web_socket intercepts before page.on fires; documented). Branch: prompt-03-cartographer.

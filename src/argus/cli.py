@@ -1,5 +1,7 @@
 """argus — browser-native market-data harvester CLI."""
 
+import asyncio
+
 import typer
 
 app = typer.Typer(help="Argus: browser-native market-data harvester.")
@@ -8,18 +10,47 @@ app = typer.Typer(help="Argus: browser-native market-data harvester.")
 @app.command()
 def profile(url: str, pillar: str = "news", id: str = "") -> None:
     """Profile a URL: run Cartographer, classify tier, draft a Source Card."""
-    typer.echo(f"[stub] profile {url} pillar={pillar} id={id}")
+    source_id = id or url.split("//")[-1].split("/")[0].replace(".", "_")
+    asyncio.run(_cartograph_async(url, pillar, source_id, []))
 
 
 @app.command()
 def cartograph(
     url: str,
     pillar: str = typer.Option("news"),
-    id: str = typer.Option(""),
+    id: str = typer.Option("", help="Source slug (derived from URL if omitted)"),
     hint_clicks: str = typer.Option("", help="Comma-separated tab labels to click"),
+    backend: str = typer.Option("vanilla", help="Stealth backend"),
 ) -> None:
-    """Map all data endpoints a site uses; emit draft Source Card."""
-    typer.echo(f"[stub] cartograph {url}")
+    """Map all data endpoints a site uses; emit cartograph.json + draft Source Card."""
+    source_id = id or url.split("//")[-1].split("/")[0].replace(".", "_")
+    hints = [h.strip() for h in hint_clicks.split(",") if h.strip()]
+    asyncio.run(_cartograph_async(url, pillar, source_id, hints, backend=backend))
+
+
+async def _cartograph_async(
+    url: str, pillar: str, source_id: str, hints: list[str], backend: str = "vanilla"
+) -> None:
+    from argus.cartographer import Cartographer
+
+    result = await Cartographer(
+        url=url,
+        pillar=pillar,
+        source_id=source_id,
+        stealth_backend=backend,
+        hint_clicks=hints,
+    ).run()
+    typer.echo(f"\nRecommended tier: {result.recommended_tier}")
+    typer.echo(f"Top data endpoints: {len(result.top_endpoints)}")
+    for ep in result.top_endpoints[:5]:
+        typer.echo(f"  [{ep.data_likelihood:.2f}] {ep.method} {ep.url[:90]}")
+    if result.websockets:
+        typer.echo(f"WebSockets: {len(result.websockets)}")
+        for ws in result.websockets:
+            typer.echo(f"  {ws.url[:90]}")
+    typer.echo(f"\nSource card  → sources/{pillar}/{source_id}.yaml")
+    typer.echo(f"Inventory    → sources/{pillar}/{source_id}.cartograph.json")
+    typer.echo(f"Snippets     → sources/{pillar}/{source_id}.snippets.py")
 
 
 @app.command()
