@@ -1,0 +1,15 @@
+id: sec_8k
+name: SEC EDGAR 8-K Filings
+url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&datetype=range&owner=include&count=40&search_text=&output=atom
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&datetype=range&owner=include&count=40&search_text=&output=atom
+    format: atom
+schema: news
+cadence: 5m
+sink_subject: argus.news.sec_8k
+robots_ok: true
+terms_note: Public government data. EDGAR is freely accessible.
+notes: 8-K current reports (material events). Importance=2; upgrades to 3 on certain items.

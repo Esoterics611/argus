@@ -1,0 +1,15 @@
+id: coindesk
+name: CoinDesk
+url: https://www.coindesk.com/arc/outboundfeeds/rss/
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://www.coindesk.com/arc/outboundfeeds/rss/
+    format: rss
+schema: news
+cadence: 5m
+sink_subject: argus.news.coindesk
+robots_ok: true
+terms_note: Public RSS feed. Headlines and summaries only; no paywall bypass.
+notes: Crypto news major outlet. Importance=2 default; 3 for regulatory/ETF/macro items.

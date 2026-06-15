@@ -1,0 +1,15 @@
+id: bls_releases
+name: Bureau of Labor Statistics Releases
+url: https://www.bls.gov/feed/bls_latest.rss
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://www.bls.gov/feed/bls_latest.rss
+    format: rss
+schema: news
+cadence: 15m
+sink_subject: argus.news.bls_releases
+robots_ok: true
+terms_note: Public government data.
+notes: CPI, PPI, NFP, unemployment. Importance=3 source. Tight-poll at release time.

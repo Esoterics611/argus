@@ -1,0 +1,15 @@
+id: fed_press
+name: Federal Reserve Press Releases
+url: https://www.federalreserve.gov/feeds/press_all.xml
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://www.federalreserve.gov/feeds/press_all.xml
+    format: rss
+schema: news
+cadence: 5m
+sink_subject: argus.news.fed_press
+robots_ok: true
+terms_note: Public government data. No ToS restrictions on RSS ingestion.
+notes: Covers FOMC statements, speeches, press releases. Importance=3 source.

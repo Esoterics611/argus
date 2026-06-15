@@ -80,10 +80,32 @@ async def _fingerprint_async(backend: str, vendor: str, fp_page: str) -> None:
 def harvest(
     pillar: str = typer.Argument(..., help="news | coinglass | calendar"),
     source: str = typer.Option("", help="Specific source id (all if omitted)"),
-    since: str = typer.Option("", help="ISO datetime lower bound"),
+    sink: str = typer.Option("memory", help="Sink backend: memory | parquet | questdb | nats"),
 ) -> None:
-    """Harvest one or all sources for a pillar."""
-    typer.echo(f"[stub] harvest pillar={pillar} source={source}")
+    """Harvest one or all sources for a pillar and write to sink."""
+    asyncio.run(_harvest_async(pillar, source, sink))
+
+
+async def _harvest_async(pillar: str, source_id: str, sink_name: str) -> None:
+    from argus.core.source_card import load
+    from argus.sinks import get_sink
+
+    sink = get_sink(sink_name)
+
+    if pillar == "news":
+        from argus.pillars.news.pipeline import NewsPipeline
+
+        pipeline = NewsPipeline.create()
+        if source_id:
+            from pathlib import Path
+
+            card = load(Path(f"sources/news/{source_id}.yaml"))
+            n = await pipeline.run_cards([card], sink)
+        else:
+            n = await pipeline.run(sink)
+        typer.echo(f"news: wrote {n} rows → {sink_name}")
+    else:
+        typer.echo(f"[stub] harvest pillar={pillar} — not yet implemented")
 
 
 @app.command()

@@ -1,10 +1,71 @@
-sources: []
-# Populated automatically by the Cartographer and source-profiler skill.
-# Schema: id, pillar, tier, cadence, enabled, ci_safe
-# Example:
-#   - id: fed_press
-#     pillar: news
-#     tier: 0
-#     cadence: 5m
-#     enabled: true
-#     ci_safe: true
+sources:
+  # ── Pillar 1: News (Tier 0 — RSS/Atom) ──────────────────────────────────────
+  - id: fed_press
+    pillar: news
+    tier: 0
+    cadence: 5m
+    enabled: true
+    ci_safe: true
+
+  - id: sec_press
+    pillar: news
+    tier: 0
+    cadence: 5m
+    enabled: true
+    ci_safe: true
+
+  - id: sec_8k
+    pillar: news
+    tier: 0
+    cadence: 5m
+    enabled: true
+    ci_safe: true
+
+  - id: us_treasury
+    pillar: news
+    tier: 0
+    cadence: 15m
+    enabled: true
+    ci_safe: true
+
+  - id: bls_releases
+    pillar: news
+    tier: 0
+    cadence: 15m
+    enabled: true
+    ci_safe: true
+
+  - id: ecb_press
+    pillar: news
+    tier: 0
+    cadence: 15m
+    enabled: true
+    ci_safe: true
+
+  - id: coindesk
+    pillar: news
+    tier: 0
+    cadence: 5m
+    enabled: true
+    ci_safe: true
+
+  - id: cointelegraph
+    pillar: news
+    tier: 0
+    cadence: 5m
+    enabled: true
+    ci_safe: true
+
+  - id: decrypt
+    pillar: news
+    tier: 0
+    cadence: 5m
+    enabled: true
+    ci_safe: true
+
+  - id: theblock
+    pillar: news
+    tier: 0
+    cadence: 5m
+    enabled: true
+    ci_safe: true

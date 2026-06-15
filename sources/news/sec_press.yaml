@@ -1,0 +1,15 @@
+id: sec_press
+name: SEC Press Releases
+url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=&datetype=range&owner=include&count=40&search_text=&output=atom
+pillar: news
+tier: 0
+status: LIVE
+rss_feeds:
+  - url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=&datetype=range&owner=include&count=40&search_text=&output=atom
+    format: atom
+schema: news
+cadence: 5m
+sink_subject: argus.news.sec_press
+robots_ok: true
+terms_note: Public government data. SEC explicitly allows public data access.
+notes: General press releases + enforcement actions. Importance=3 source.
